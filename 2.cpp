@@ -1,3 +1,7 @@
+//Rimilmandrita Ghosh
+
+//Implementing binary search in linkedlist
+
 #include <iostream>
 using namespace std;
 
@@ -73,7 +77,7 @@ for (int i=0;i<n;i++)
 //function to search the required element using binary search
 int binarySearch(int beg, int end,int num)
 {     
-         	while(head!=NULL)//The loop will run if the list is non-empty
+         	while(beg<=end)//The loop will run till the element is found.
 	{
 	int mid=(beg+end)/2;
 	node *middle=new node; //creating a node middle
@@ -116,7 +120,7 @@ int main() {
  cout<<"The unsorted ";
  l.display(); //calling display function to print the unsorted list
  l.sortrimil(n);  //calling sort function to rearrange the array elements
- cout<<"The sorted ";
+ cout<<"\nThe sorted ";
  l.display();  //calling the display function to print the sorted array
  
  cout<<"\nEnter the element to be searched:";
@@ -125,7 +129,7 @@ cout<<num;
 int pos=l.binarySearch(0,n-1,num);
 if (pos==-1)
 {
-	cout<<"Element is not found.";
+	cout<<"\nElement is not found.";
 }
 else
 cout<<"\nThe element is found at "<<pos<<" th position. ";
