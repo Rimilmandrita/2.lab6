@@ -70,6 +70,35 @@ for (int i=0;i<n;i++)
     }
     return 0;
 }
+
+int binarySearch(int beg, int end,int num)
+{
+	while(beg<=end)
+	{
+	int mid=(beg+end)/2;
+	node *mid=new node;
+	mid=head;
+		for(int i=0;i<mid;i++)
+		{
+		  mid=mid->next;	
+		}
+		if(mid->data==num)
+		return mid+1;
+	if(num<mid->data)
+	{
+		end=mid-1;
+	}
+	else 
+	{
+	            beg=mid+1;
+	            for(int j=0;j<beg;j++)
+	            {
+	            head=head->next;
+	            }
+	}
+	return -1;
+	}
+}
 };
 
 int main() {
