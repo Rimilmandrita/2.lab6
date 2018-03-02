@@ -73,18 +73,20 @@ for (int i=0;i<n;i++)
 
 int binarySearch(int beg, int end,int num)
 {
-	while(beg<=end)
+	while(head!=NULL)
 	{
 	int mid=(beg+end)/2;
-	node *mid=new node;
-	mid=head;
+	node *middle=new node;
+	middle=head;
 		for(int i=0;i<mid;i++)
 		{
-		  mid=mid->next;	
+		  middle=middle->next;	
 		}
-		if(mid->data==num)
+	if(middle->data==num)
+	{
 		return mid+1;
-	if(num<mid->data)
+	}
+	else if(middle->data>num)
 	{
 		end=mid-1;
 	}
@@ -96,8 +98,8 @@ int binarySearch(int beg, int end,int num)
 	            head=head->next;
 	            }
 	}
-	return -1;
 	}
+	return -1;
 }
 };
 
@@ -118,9 +120,12 @@ int main() {
  l.sortrimil(n);  //calling sort function to rearrange the array elements
  cout<<"The sorted ";
  l.display();  //calling the display function to print the sorted array
- 
- cout<<"\nEnter the element to be searched:"
+ int beg=0;
+ int end=n-1;
+ cout<<"\nEnter the element to be searched:";
 cin>>num;
 cout<<num;
+int pos=l.binarySearch(beg,end,num);
+cout<<"\nThe element is found at "<<pos;
 	return 0;
 }
