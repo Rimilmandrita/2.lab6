@@ -70,19 +70,20 @@ for (int i=0;i<n;i++)
     }
     return 0;
 }
-
+//function to search the required element using binary search
 int binarySearch(int beg, int end,int num)
-{
-	while(head!=NULL)
+{     
+         	while(head!=NULL)//The loop will run if the list is non-empty
 	{
 	int mid=(beg+end)/2;
-	node *middle=new node;
+	node *middle=new node; //creating a node middle
 	middle=head;
-		for(int i=0;i<mid;i++)
+
+		for(int i=0;i<mid;i++) //pointing the middle node to the mid element
 		{
-		  middle=middle->next;	
+		  middle=middle->next;
 		}
-	if(middle->data==num)
+	if(middle->data==num)//To check if middle element is located at the middle of list
 	{
 		return mid+1;
 	}
@@ -90,21 +91,18 @@ int binarySearch(int beg, int end,int num)
 	{
 		end=mid-1;
 	}
-	else 
+	else if(middle->data<num)
 	{
 	            beg=mid+1;
-	            for(int j=0;j<beg;j++)
-	            {
-	            head=head->next;
-	            }
+	           
 	}
 	}
-	return -1;
+return -1;	//to return -1 when the element is not present in the loop.
 }
 };
 
 int main() {
-	int n,num,el;
+	int n,num,el,beg=0;
  linkedList l; // Declaring object of class linkedList
  cout<<"\nEnter the number of elements in the list:";
  cin>>n;
@@ -120,12 +118,16 @@ int main() {
  l.sortrimil(n);  //calling sort function to rearrange the array elements
  cout<<"The sorted ";
  l.display();  //calling the display function to print the sorted array
- int beg=0;
- int end=n-1;
+ 
  cout<<"\nEnter the element to be searched:";
 cin>>num;
 cout<<num;
-int pos=l.binarySearch(beg,end,num);
-cout<<"\nThe element is found at "<<pos;
+int pos=l.binarySearch(0,n-1,num);
+if (pos==-1)
+{
+	cout<<"Element is not found.";
+}
+else
+cout<<"\nThe element is found at "<<pos<<" th position. ";
 	return 0;
 }
